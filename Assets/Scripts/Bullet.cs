@@ -7,9 +7,9 @@ public class Bullet : MonoBehaviour
     private readonly float _speed = 8f;
     [SerializeField] private Rigidbody _rb;
 
-    public void SetTarget(Vector3 target)
+    public void SetDirection(Vector3 direction)
     {
-        _rb.velocity = _speed * (target - transform.position).normalized;
+        _rb.velocity = _speed * direction.normalized;
         Destroy(gameObject, 5f);
     }
 

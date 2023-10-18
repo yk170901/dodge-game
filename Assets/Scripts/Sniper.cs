@@ -53,29 +53,32 @@ public class Sniper : MonoBehaviour
         if (_spawnTimer >= _spawnRate)
         {
             Debug.DrawRay(transform.position, GetFowardDirection(), Color.green, 15f);
-            Debug.DrawRay(transform.position, (_target.position - transform.position), Color.red, 5f);
+            Debug.DrawRay(transform.position, _target.position - transform.position, Color.red, 5f);
 
-            GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation());
+            Debug.Log($"{Vector3.Angle(GetFowardDirection(), _target.position - transform.position)}");
+
+            //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(GetFowardDirection().z - transform.rotation.z));
+            GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(Vector3.Angle(GetFowardDirection(), _target.position - transform.position)));
             bullet.transform.SetParent(_bulletContainer);
-            bullet.GetComponent<Bullet>().SetTarget(_target.position);
+            bullet.GetComponent<Bullet>().SetDirection(_target.position - transform.position);
 
             StartCoroutine(nameof(AppearRoutine));
             ResetSpawnCondition();
         }
     }
 
-    private Quaternion GetBulletRotation()
+    private Quaternion GetBulletRotation(float angleTowardsPlayer)
     {
         switch (_sniperPosition)
         {
             case SniperPosition.Front:
-                return Quaternion.Euler(new Vector3(90, 0, 0));
+                return Quaternion.Euler(new Vector3(90, 0, 0 - angleTowardsPlayer));
             case SniperPosition.Back:
-                return Quaternion.Euler(new Vector3(270, 0, 0));
+                return Quaternion.Euler(new Vector3(-90, 0, 0 - angleTowardsPlayer));
             case SniperPosition.Right:
-                return Quaternion.Euler(new Vector3(0, 0, 270));
+                return Quaternion.Euler(new Vector3(0, -angleTowardsPlayer, -90));
             case SniperPosition.Left:
-                return Quaternion.Euler(new Vector3(0, 0, 90));
+                return Quaternion.Euler(new Vector3(0, angleTowardsPlayer, 90));
             default:
                 return Quaternion.identity;
         }
