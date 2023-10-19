@@ -16,6 +16,7 @@ public class Sniper : MonoBehaviour
     [SerializeField] private SniperPosition _sniperPosition;
 
     [SerializeField] private MeshRenderer _renderer;
+    [SerializeField] private MeshRenderer _aimRenderer;
 
     [SerializeField] private GameObject _bullet;
 
@@ -34,11 +35,13 @@ public class Sniper : MonoBehaviour
     {
         isGameOver = true;
         _renderer.enabled = false;
+        _aimRenderer.enabled = false;
     }
 
     private void Start()
     {
         _renderer.enabled = false;
+        _aimRenderer.enabled = false;
         ResetSpawnCondition();
 
         GameManager.Instance.GameOverEvent += OnGameOver;
@@ -72,13 +75,13 @@ public class Sniper : MonoBehaviour
         switch (_sniperPosition)
         {
             case SniperPosition.Front:
-                return Quaternion.Euler(new Vector3(90, 0, 0 - angleTowardsPlayer));
-            case SniperPosition.Back:
                 return Quaternion.Euler(new Vector3(-90, 0, 0 - angleTowardsPlayer));
+            case SniperPosition.Back:
+                return Quaternion.Euler(new Vector3(90, 0, 0 - angleTowardsPlayer));
             case SniperPosition.Right:
-                return Quaternion.Euler(new Vector3(0, -angleTowardsPlayer, -90));
-            case SniperPosition.Left:
                 return Quaternion.Euler(new Vector3(0, angleTowardsPlayer, 90));
+            case SniperPosition.Left:
+                return Quaternion.Euler(new Vector3(0, -angleTowardsPlayer, -90));
             default:
                 return Quaternion.identity;
         }
@@ -89,13 +92,13 @@ public class Sniper : MonoBehaviour
         switch (_sniperPosition)
         {
             case SniperPosition.Front:
-                return Vector3.forward;
-            case SniperPosition.Back:
                 return Vector3.back;
+            case SniperPosition.Back:
+                return Vector3.forward;
             case SniperPosition.Right:
-                return Vector3.right;
-            case SniperPosition.Left:
                 return Vector3.left;
+            case SniperPosition.Left:
+                return Vector3.right;
             default:
                 return Vector3.zero;
         }
@@ -104,7 +107,9 @@ public class Sniper : MonoBehaviour
     private IEnumerator AppearRoutine()
     {
         _renderer.enabled = true;
+        _aimRenderer.enabled = true;
         yield return new WaitForSeconds(0.3f);
+        _aimRenderer.enabled = false;
         _renderer.enabled = false;
     }
 
