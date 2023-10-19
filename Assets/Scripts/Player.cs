@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
 
+    [SerializeField] private bool _enableDeath;
+
     private float _speed = 8f;
 
     private bool _isGameOver = false;
@@ -30,5 +32,9 @@ public class Player : MonoBehaviour
         _rb.velocity = Vector3.zero;
     }
 
-    public void Die() => GameManager.Instance.EndGame();
+    public void Die()
+    {
+        if(_enableDeath)
+            GameManager.Instance.EndGame();
+    }
 }
