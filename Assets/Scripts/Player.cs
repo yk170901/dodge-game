@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
 
+    [SerializeField] private Animator _animator;
+
     [SerializeField] private bool _enableDeath;
 
     private float _speed = 8f;
@@ -19,10 +21,12 @@ public class Player : MonoBehaviour
     {
         if (_isGameOver) return;
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float horMove = Input.GetAxis("Horizontal");
+        float verMove = Input.GetAxis("Vertical");
 
-        Vector3 value = new Vector3(x, 0, z) * _speed;
+        _animator.SetBool("IsRunning", (horMove != 0 || verMove != 0));
+
+        Vector3 value = new Vector3(horMove, 0, verMove) * _speed;
         _rb.velocity = value;
     }
 
