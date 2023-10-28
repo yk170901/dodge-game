@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
 
     private bool _isGameOver = false;
 
-    private float _speed = 8f;
+    [SerializeField] private float _speed;
+    //private float _speed = 7f;
 
     private void Start() => GameManager.Instance.GameOverEvent += OnGameOver;
     private void OnGameOver()

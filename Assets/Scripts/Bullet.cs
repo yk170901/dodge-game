@@ -22,11 +22,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
-        {
-            Debug.LogWarning(other.name);
-            return;
-        }
+        if (other.CompareTag("Bullet")) return;
 
         if (other.CompareTag("Player"))
             other.gameObject.GetComponent<Player>().Die();
