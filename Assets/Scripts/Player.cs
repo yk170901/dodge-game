@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool _enableDeath;
 
+    private bool _isGameOver = false;
+
     private float _speed = 8f;
 
-    private bool _isGameOver = false;
-    
     private void Start() => GameManager.Instance.GameOverEvent += OnGameOver;
     private void OnGameOver()
     {
@@ -39,5 +39,11 @@ public class Player : MonoBehaviour
     {
         if(_enableDeath)
             GameManager.Instance.EndGame();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Score"))
+            Debug.Log("Score");
     }
 }

@@ -20,10 +20,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    private void OnCollisionEnter(Collision collision) => gameObject.SetActive(false);
-
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.LogWarning(other.name);
+            return;
+        }
+
         if (other.CompareTag("Player"))
             other.gameObject.GetComponent<Player>().Die();
 

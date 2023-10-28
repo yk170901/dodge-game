@@ -6418,7 +6418,7 @@ GameObject:
   - component: {fileID: 479017929}
   - component: {fileID: 478970473}
   m_Layer: 0
-  m_Name: RingBiging
+  m_Name: Ring Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6936,7 +6936,7 @@ GameObject:
   - component: {fileID: 583875441}
   - component: {fileID: 583875440}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7401,9 +7401,10 @@ GameObject:
   m_Component:
   - component: {fileID: 709625156}
   - component: {fileID: 709625155}
+  - component: {fileID: 709625157}
   m_Layer: 0
-  m_Name: Score_Point
-  m_TagString: Untagged
+  m_Name: Score Point
+  m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7417,9 +7418,9 @@ CapsuleCollider:
   m_GameObject: {fileID: 709625154}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &709625156
@@ -7437,6 +7438,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &709625157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709625154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 0.2, z: 1.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &718523922
 GameObject:
   m_ObjectHideFlags: 0
@@ -8492,7 +8506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120522809}
   m_Layer: 0
-  m_Name: Bullet_Container
+  m_Name: Bullet Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9486,7 +9500,7 @@ GameObject:
   - component: {fileID: 1346575924}
   - component: {fileID: 1346575923}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9708,7 +9722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9716,11 +9730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9728,7 +9742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -9757,6 +9771,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54cab21e95db6994f9b9b590978c7a29, type: 3}
@@ -11680,7 +11698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1919637328}
   m_Layer: 5
-  m_Name: GameOverUi
+  m_Name: Game Over UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12351,7 +12369,7 @@ GameObject:
   - component: {fileID: 2103914782}
   - component: {fileID: 2103914781}
   m_Layer: 5
-  m_Name: Background_Canvas
+  m_Name: Background Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
