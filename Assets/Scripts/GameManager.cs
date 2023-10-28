@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public delegate void GameOverEventHandler(object sender);
+    public delegate void GameOverEventHandler();
     public event GameOverEventHandler GameOverEvent;
+    public void EndGame() => GameOverEvent?.Invoke();
 
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -18,5 +19,4 @@ public class GameManager : MonoBehaviour
         if(_instance == null) _instance = this;
     }
 
-    public void EndGame() => GameOverEvent?.Invoke(this);
 }

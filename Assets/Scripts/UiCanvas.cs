@@ -36,7 +36,7 @@ public class UiCanvas : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void OnGameOver(object sender)
+    private void OnGameOver()
     {
         _isGameOver = true;
 

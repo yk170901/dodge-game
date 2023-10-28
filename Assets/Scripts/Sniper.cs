@@ -23,37 +23,37 @@ public class Sniper : MonoBehaviour
     [SerializeField] private Transform _bulletContainer;
     [SerializeField] private Transform _target;
 
-    [SerializeField] private float _spawnRateMin = 1f;
-    [SerializeField] private float _spawnRateMax = 5f;
+    [SerializeField] private float _shootRateMin = 1f;
+    [SerializeField] private float _shootRateMax = 5f;
 
-    private float _spawnRate;
-    private float _spawnTimer;
+    private float _shootRate;
+    private float _shootTimer;
 
     private bool isGameOver = false;
 
-    private void OnGameOver(object sender)
+    private void Start()
+    {
+        _renderer.enabled = false;
+        _aimRenderer.enabled = false;
+        ResetShootingCondition();
+
+        GameManager.Instance.GameOverEvent += OnGameOver;
+    }
+
+    private void OnGameOver()
     {
         isGameOver = true;
         _renderer.enabled = false;
         _aimRenderer.enabled = false;
     }
 
-    private void Start()
-    {
-        _renderer.enabled = false;
-        _aimRenderer.enabled = false;
-        ResetSpawnCondition();
-
-        GameManager.Instance.GameOverEvent += OnGameOver;
-    }
-
     private void Update()
     {
         if (isGameOver) return;
 
-        _spawnTimer += Time.deltaTime;
+        _shootTimer += Time.deltaTime;
 
-        if (_spawnTimer >= _spawnRate)
+        if (_shootTimer >= _shootRate)
         {
             Debug.DrawRay(transform.position, GetFowardDirection(), Color.green, 15f);
             Debug.DrawRay(transform.position, _target.position - transform.position, Color.red, 5f);
@@ -64,7 +64,7 @@ public class Sniper : MonoBehaviour
             bullet.GetComponent<Bullet>().SetDirection(_target.position - transform.position);
 
             StartCoroutine(nameof(AppearRoutine));
-            ResetSpawnCondition();
+            ResetShootingCondition();
         }
     }
 
@@ -111,9 +111,9 @@ public class Sniper : MonoBehaviour
         _renderer.enabled = false;
     }
 
-    private void ResetSpawnCondition()
+    private void ResetShootingCondition()
     {
-        _spawnRate = Random.Range(_spawnRateMin, _spawnRateMax);
-        _spawnTimer = 0;
+        _shootRate = Random.Range(_shootRateMin, _shootRateMax);
+        _shootTimer = 0;
     }
 }

@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     private bool _isGameOver = false;
     
     private void Start() => GameManager.Instance.GameOverEvent += OnGameOver;
+    private void OnGameOver()
+    {
+        _isGameOver = true;
+        _rb.velocity = Vector3.zero;
+    }
 
     private void Update()
     {
@@ -28,12 +33,6 @@ public class Player : MonoBehaviour
 
         Vector3 value = new Vector3(horMove, 0, verMove) * _speed;
         _rb.velocity = value;
-    }
-
-    private void OnGameOver(object sender)
-    {
-        _isGameOver = true;
-        _rb.velocity = Vector3.zero;
     }
 
     public void Die()
