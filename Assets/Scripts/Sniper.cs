@@ -59,7 +59,8 @@ public class Sniper : MonoBehaviour
             Debug.DrawRay(transform.position, _target.position - transform.position, Color.red, 5f);
 
             //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(GetFowardDirection().z - transform.rotation.z));
-            GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(Vector3.Angle(GetFowardDirection(), _target.position - transform.position)));
+            GameObject bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+            //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(Vector3.Angle(GetFowardDirection(), _target.position - transform.position)));
             bullet.transform.SetParent(_bulletContainer);
             bullet.GetComponent<Bullet>().SetDirection(_target.position - transform.position);
 
