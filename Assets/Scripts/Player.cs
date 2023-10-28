@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
     {
         if (_isGameOver) return;
 
-        float horMove = Input.GetAxis("Horizontal");
-        float verMove = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        _animator.SetBool("IsRunning", (horMove != 0 || verMove != 0));
+        _animator.SetBool("IsRunning", (moveDirection.x != 0 || moveDirection.z != 0));
+        _rb.velocity = moveDirection * _speed;
 
-        Vector3 value = new Vector3(horMove, 0, verMove) * _speed;
-        _rb.velocity = value;
+        if (moveDirection != Vector3.zero)
+            transform.forward = moveDirection;
     }
 
     public void Die()
