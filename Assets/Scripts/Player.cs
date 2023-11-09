@@ -5,22 +5,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rb;
-
-    [SerializeField] private Animator _animator;
-
     [SerializeField] private bool _enableDeath;
+
+    private Rigidbody _rb;
+
+    private Animator _animator;
 
     private bool _isGameOver = false;
 
     [SerializeField] private float _speed;
     //private float _speed = 7f;
 
-    private void Start() => GameManager.Instance.GameOverEvent += OnGameOver;
-    private void OnGameOver()
+    private void Awake()
     {
-        _isGameOver = true;
-        _rb.velocity = Vector3.zero;
+        _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
+    }
+
+    internal void Score(int score)
+    {
+        Debug.Log(score + " get!");
     }
 
     private void Update()
@@ -38,13 +42,11 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        if(_enableDeath)
-            GameManager.Instance.EndGame();
-    }
+        if (!_enableDeath) return; // variable for testing
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Score"))
-            Debug.Log("Score");
+        GameManager.Instance.EndGame();
+
+        _isGameOver = true;
+        _rb.velocity = Vector3.zero;
     }
 }

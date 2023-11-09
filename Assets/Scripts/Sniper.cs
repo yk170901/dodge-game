@@ -1,3 +1,4 @@
+using Assets.Scripts.General;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public enum SniperPosition
     Left
 }
 
-public class Sniper : MonoBehaviour
+public class Sniper : MonoBehaviour, IGameOverSubscriber
 {
     [SerializeField] private SniperPosition _sniperPosition;
 
@@ -116,5 +117,10 @@ public class Sniper : MonoBehaviour
     {
         _shootRate = Random.Range(_shootRateMin, _shootRateMax);
         _shootTimer = 0;
+    }
+
+    void IGameOverSubscriber.OnGameOver()
+    {
+        throw new System.NotImplementedException();
     }
 }
