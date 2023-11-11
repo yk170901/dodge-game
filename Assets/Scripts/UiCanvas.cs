@@ -42,6 +42,11 @@ public class UiCanvas : MonoBehaviour
 
         _gameOverElementContainer.SetActive(true);
 
+        _recordText.text = $"Best Record : {FetchBestRecord(): 0.0}";
+    }
+
+    private float FetchBestRecord()
+    {
         float bestRecord = PlayerPrefs.GetFloat(_bestRecordStr);
 
         if (_passedTime > bestRecord)
@@ -50,6 +55,6 @@ public class UiCanvas : MonoBehaviour
             PlayerPrefs.SetFloat(_bestRecordStr, bestRecord);
         }
 
-        _recordText.text = $"Best Record : {bestRecord: 0.0}";
+        return bestRecord;
     }
 }
