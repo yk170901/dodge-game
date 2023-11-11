@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScorePoint : MonoBehaviour
 {
+    private bool hasBeenCollected = false;
+
     private int score = 100;
 
     private void Awake()
@@ -13,9 +13,11 @@ public class ScorePoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent(out Player player)) return;
+        if (!other.TryGetComponent(out Player player)
+            || hasBeenCollected) return;
 
-        player.Score(score);
+        hasBeenCollected = true;
+        GameManager.Instance.AddScore(score);
         GetComponentInChildren<ParticleSystem>().Stop();
     }
 }

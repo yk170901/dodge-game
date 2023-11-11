@@ -12,6 +12,10 @@ public class MainCanvas : MonoBehaviour
 
     private readonly string _bestRecordStr = "bestRecord";
 
+    private float _totalScore => _passedTime + _scorePoint;
+
+    private float _scorePoint = 0;
+
     private float _passedTime = 0;
 
     private bool _isGameOver = false;
@@ -21,6 +25,7 @@ public class MainCanvas : MonoBehaviour
         _gameOverElementContainer.SetActive(false);
 
         GameManager.Instance.GameOverEvent += OnGameOver;
+        GameManager.Instance.ScoreUpEvent += (score) => _scorePoint += score ;
     }
 
     private void FixedUpdate()
@@ -28,7 +33,8 @@ public class MainCanvas : MonoBehaviour
         if (!_isGameOver)
         {
             _passedTime += Time.fixedDeltaTime;
-            _timeText.text = $"{_passedTime: 0.0}";
+
+            _timeText.text = $"{_totalScore: 0.0}";
         }
         else if (Input.GetKeyDown(KeyCode.R))
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -47,9 +53,9 @@ public class MainCanvas : MonoBehaviour
     {
         float bestRecord = PlayerPrefs.GetFloat(_bestRecordStr);
 
-        if (_passedTime > bestRecord)
+        if (_totalScore > bestRecord)
         {
-            bestRecord = _passedTime;
+            bestRecord = _totalScore;
             PlayerPrefs.SetFloat(_bestRecordStr, bestRecord);
         }
 

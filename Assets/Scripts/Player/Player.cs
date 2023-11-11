@@ -19,11 +19,6 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    internal void Score(int score)
-    {
-        Debug.Log(score + " get!");
-    }
-
     private void Update()
     {
         if (_isGameOver) return;

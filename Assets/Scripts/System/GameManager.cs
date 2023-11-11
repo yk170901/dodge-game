@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public delegate void GameOverEventHandler();
     public event GameOverEventHandler GameOverEvent;
     public void EndGame() => GameOverEvent?.Invoke();
+
+    public Action<float> ScoreUpEvent;
+    public void AddScore(float score) => ScoreUpEvent?.Invoke(score);
 
     private static GameManager _instance;
     public static GameManager Instance => _instance;
