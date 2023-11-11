@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Bullet")) return;
 
-        if (other.CompareTag("Player"))
-            other.gameObject.GetComponent<Player>().Die();
+        if (other.TryGetComponent(out Player player))
+            player.Die();
 
         gameObject.SetActive(false);
     }

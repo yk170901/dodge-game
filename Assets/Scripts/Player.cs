@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
         GameManager.Instance.EndGame();
 
         _isGameOver = true;
+
+        _animator.SetTrigger("Die");
+
         _rb.velocity = Vector3.zero;
     }
 }
