@@ -16,6 +16,8 @@ public class ScorePoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
+
         if (!other.TryGetComponent(out Player player)) return;
 
         player.Score(score);

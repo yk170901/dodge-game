@@ -7,7 +7,11 @@ public class ScorePointSpawner : MonoBehaviour, IGameOverSubscriber
 {
     [SerializeField] private GameObject _scorePoint;
 
+    [SerializeField] private Transform _scorePointContainer;
+
     private Transform _floor;
+
+    private float offset = 5;
 
     private bool _isGameOver;
 
@@ -22,17 +26,14 @@ public class ScorePointSpawner : MonoBehaviour, IGameOverSubscriber
     {
         while (!_isGameOver)
         {
-            Debug.Log(_floor.position.x + " " + _floor.position.y);
+            float ranX = Random.Range(-8, 8);
+            float ranZ = Random.Range(-8, 8);
 
-            // Random point in Floor goes in the middle
-            MeshRenderer renderer = _floor.GetComponent<MeshRenderer>();
+            GameObject scorePoint = Instantiate(_scorePoint, transform.TransformPoint(new Vector3(ranX, 0, ranZ)), transform.rotation);
 
-            float ranX = Random.Range(_floor.position.x - renderer.bounds.size.x/2, _floor.position.x + renderer.bounds.size.x/2);
-            float ranZ = Random.Range(_floor.position.z - renderer.bounds.size.z/2, _floor.position.z + renderer.bounds.size.z/2);
+            scorePoint.transform.SetParent(_scorePointContainer);
 
-            Instantiate(_scorePoint, new Vector3(ranX, 0, ranZ), Quaternion.identity);
-
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
