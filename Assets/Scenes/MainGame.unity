@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 239629125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e963d25d119ac47b755adcca6a8ef1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e9e207b24982fd4ebb9e7e9a70dce32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverElementContainer: {fileID: 1919637327}
@@ -1219,10 +1219,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 338832047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c360859960304740ab60b3c25ca2c4c, type: 3}
+  m_Script: {fileID: 11500000, guid: eb1447c1a838d0246ad35f1e6c302a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 30
 --- !u!4 &338832049
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3377395426086337018, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
+      propertyPath: _bulletContainer
+      value: 
+      objectReference: {fileID: 1120522809}
     - target: {fileID: 8053404689553177434, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
       propertyPath: _target
       value: 
@@ -2136,7 +2140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 583875441}
-  - component: {fileID: 583875440}
+  - component: {fileID: 583875442}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2144,18 +2148,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &583875440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583875439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f889cd8bf237e34d9cf82938dd60650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &583875441
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,6 +2162,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583875442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583875439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b546e09a5575a42bcabb2709de8a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597035018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,20 +2951,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921068414}
   m_Mesh: {fileID: 4300002, guid: 167ce1292cf7b7446b2814b8eb9b153e, type: 3}
---- !u!114 &949402773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148409303510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcc87f779d9b7b9479a5014ee26f99cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enableDeath: 1
-  _speed: 7
 --- !u!54 &949402774
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4923,6 +4913,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3377395426086337018, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
+      propertyPath: _bulletContainer
+      value: 
+      objectReference: {fileID: 1120522809}
     - target: {fileID: 8053404689553177434, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
       propertyPath: _bullet
       value: 
@@ -5031,6 +5025,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3377395426086337018, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
+      propertyPath: _bulletContainer
+      value: 
+      objectReference: {fileID: 1120522809}
     - target: {fileID: 8053404689553177434, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
       propertyPath: _bullet
       value: 
@@ -5186,6 +5184,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3377395426086337018, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
+      propertyPath: _bulletContainer
+      value: 
+      objectReference: {fileID: 1120522809}
     - target: {fileID: 8053404689553177434, guid: 35904f82aaa31774c8fb95cdae5e5991, type: 3}
       propertyPath: _target
       value: 
@@ -8432,7 +8434,7 @@ GameObject:
   - component: {fileID: 949402774}
   - component: {fileID: 949402775}
   - component: {fileID: 949402776}
-  - component: {fileID: 949402773}
+  - component: {fileID: 919132148409303511}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8440,6 +8442,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148409303511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148409303510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bf9fcf321419b4c8d1a862863ce4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableDeath: 1
+  _speed: 7
 --- !u!33 &927270526028167776
 MeshFilter:
   m_ObjectHideFlags: 0

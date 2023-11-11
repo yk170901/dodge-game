@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2290736653822255780}
   - component: {fileID: 3258731553609563036}
   - component: {fileID: 5935964423945789211}
-  - component: {fileID: 8053404689553177434}
+  - component: {fileID: 3377395426086337018}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -164,7 +164,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8053404689553177434
+--- !u!114 &3377395426086337018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,14 +173,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8136332339661916941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ec9a34797169a42814af036d865245, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f64c8f0df8ee9d47ae7b734918e1b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sniperPosition: 0
-  _renderer: {fileID: 5935964423945789211}
-  _aimRenderer: {fileID: 1556496505835668642}
   _bullet: {fileID: 6245973722317708641, guid: 3f5e92d0c0cffd34484c5052f5e71a2a, type: 3}
   _bulletContainer: {fileID: 0}
-  _target: {fileID: 0}
-  _spawnRateMin: 1
-  _spawnRateMax: 5
+  _aimRenderer: {fileID: 1556496505835668642}
