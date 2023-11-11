@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class ScorePoint : MonoBehaviour
 {
-    private ParticleSystem _particleSys;
-
     private int score = 100;
 
     private void Awake()
     {
-        _particleSys = GetComponentInChildren<ParticleSystem>();
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 5);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-
         if (!other.TryGetComponent(out Player player)) return;
 
         player.Score(score);
-        Deactivate();
+        GetComponentInChildren<ParticleSystem>().Stop();
     }
-
-    private void Deactivate() => _particleSys.Stop();
 }
