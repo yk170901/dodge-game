@@ -1,6 +1,16 @@
 # Dodge Game
 
 ## To-dos
+- Supply
+  - spawn supply
+  - animation (revealing animation)
+  - functions
+    - collect effect
+    - disappear
+    - disolve shader effect (*optional)
+- Health
+  - lower when hit by bullet
+  - recover by health item
 - Sound
   - Main
     - main music
