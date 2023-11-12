@@ -53,7 +53,7 @@ public class MainCanvas : MonoBehaviour
 
         _gameOverElementContainer.SetActive(true);
 
-        _recordText.text = $"Best Record : {FetchBestRecord(): 0.0}";
+        _recordText.text = $"Best Record {FetchBestRecord(): 0.0}";
     }
 
     private float FetchBestRecord()
