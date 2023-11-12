@@ -4,7 +4,7 @@ public class ScorePoint : MonoBehaviour
 {
     private bool hasBeenCollected = false;
 
-    private int score = 100;
+    private int score = 10;
 
     private void Awake()
     {

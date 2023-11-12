@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public class MainCanvas : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverElementContainer;
+    [SerializeField] private GameObject _addedScoreContainer;
 
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private TextMeshProUGUI _restartText;
     [SerializeField] private TextMeshProUGUI _recordText;
+    [SerializeField] private GameObject _addedScoreText;
 
     private readonly string _bestRecordStr = "bestRecord";
 
@@ -23,9 +25,14 @@ public class MainCanvas : MonoBehaviour
     private void Start()
     {
         _gameOverElementContainer.SetActive(false);
+        _addedScoreText.SetActive(false);
 
         GameManager.Instance.GameOverEvent += OnGameOver;
-        GameManager.Instance.ScoreUpEvent += (score) => _scorePoint += score ;
+        GameManager.Instance.ScoreUpEvent += (score) =>
+        {
+            _scorePoint += score;
+            _addedScoreText.SetActive(true);
+        };
     }
 
     private void FixedUpdate()
