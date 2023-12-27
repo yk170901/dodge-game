@@ -15,6 +15,8 @@ namespace Assets.Scripts.Supply
 
         [SerializeField] private SupplyItemSO[] _supplyItems;
 
+        private string _floorTag = "Floor";
+
 
         private void Awake()
         {
@@ -23,9 +25,7 @@ namespace Assets.Scripts.Supply
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Supply OnTriggerEnter");
-
-            if (other.CompareTag("Floor"))
+            if (other.CompareTag(_floorTag))
             {
                 StopCoroutine(nameof(FallRoutine));
 
@@ -71,38 +71,34 @@ namespace Assets.Scripts.Supply
 
         private IEnumerator FoldParachutteRoutine()
         {
+            // shrink parashutte height
+            float minScale = 0.1f;
             float yElapsedTime = 0;
-
             float initialYScale = _parachutte.transform.localScale.y;
 
-            // 0.1
-            while (_parachutte.transform.localScale.y > 0.1f)
+            while (_parachutte.transform.localScale.y > minScale)
             {
                 yElapsedTime += Time.deltaTime;
 
                 _parachutte.transform.localScale = new Vector3(
                     _parachutte.transform.localScale.x,
-                    Mathf.Lerp(initialYScale, 0.1f, yElapsedTime / 1.9f),
+                    Mathf.Lerp(initialYScale, minScale, yElapsedTime / 1.9f),
                     _parachutte.transform.localScale.z
                     );
 
                 yield return null;
             }
 
+            // shrink parashutte entirely
             float xZElapsedTime = 0;
-
             float initialXZScale = _parachutte.transform.localScale.x;
-
             float newXZScale = initialXZScale;
 
-            Debug.Log("initialXZScale:" + initialXZScale);
-
-            // 0.1
-            while (newXZScale > 0.1f)
+            while (newXZScale > minScale)
             {
                 xZElapsedTime += Time.deltaTime;
 
-                newXZScale = Mathf.Lerp(initialXZScale, 0.1f, xZElapsedTime / 0.5f);
+                newXZScale = Mathf.Lerp(initialXZScale, minScale, xZElapsedTime / 0.5f);
 
                 _parachutte.transform.localScale = new Vector3(
                     newXZScale,
@@ -113,17 +109,15 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
-            _parachutte.SetActive(false);
-
-            Debug.Log("asdf");
             //Instantiate(GetRandomSupplyItem(), transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
+
         private SupplyItemSO GetRandomSupplyItem()
         {
             int chosenIndex = Random.Range(0, 3);
 
             return _supplyItems[chosenIndex];
         }
-
     }
 }
