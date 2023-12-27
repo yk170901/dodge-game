@@ -14,12 +14,8 @@ public class Sniper : MonoBehaviour
 
     private MeshRenderer _renderer;
 
-    private float _shootRateMin = 1f;
-    private float _shootRateMax = 5f;
-    private float _shootRate;
-    private float _shootTimer;
-
-    private bool isGameOver = false;
+    private const float SHOOT_RATE_MIN = 0.3f;
+    private const float SHOOT_RATE_MAX = 5f;
 
     private void Start()
     {
@@ -30,51 +26,45 @@ public class Sniper : MonoBehaviour
         _renderer.enabled = false;
         _aimRenderer.enabled = false;
 
-        ResetShootingCondition();
-
         GameManager.Instance.GameOverEvent += OnGameOver;
+        StartCoroutine(nameof(ShootRoutine));
     }
 
     private void OnGameOver()
     {
-        isGameOver = true;
+        StopCoroutine(nameof(ShootRoutine));
+
         _renderer.enabled = false;
         _aimRenderer.enabled = false;
     }
 
-    private void Update()
+    private void ShootBullet()
     {
-        if (isGameOver) return;
+        Debug.DrawRay(transform.position, _target.position - transform.position, Color.red, 5f);
 
-        _shootTimer += Time.deltaTime;
+        //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(GetFowardDirection().z - transform.rotation.z));
+        GameObject bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+        //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(Vector3.Angle(GetFowardDirection(), _target.position - transform.position)));
+        bullet.transform.SetParent(_bulletContainer);
+        bullet.GetComponent<Bullet>().SetDirection(_target.position - transform.position);
+    }
 
-        if (_shootTimer >= _shootRate)
+    private IEnumerator ShootRoutine()
+    {
+        yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, SHOOT_RATE_MAX));
+
+        while (true)
         {
-            Debug.DrawRay(transform.position, _target.position - transform.position, Color.red, 5f);
+            _renderer.enabled = true;
+            _aimRenderer.enabled = true;
 
-            //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(GetFowardDirection().z - transform.rotation.z));
-            GameObject bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
-            //GameObject bullet = Instantiate(_bullet, transform.position, GetBulletRotation(Vector3.Angle(GetFowardDirection(), _target.position - transform.position)));
-            bullet.transform.SetParent(_bulletContainer);
-            bullet.GetComponent<Bullet>().SetDirection(_target.position - transform.position);
+            ShootBullet();
 
-            StartCoroutine(nameof(AppearRoutine));
-            ResetShootingCondition();
+            yield return new WaitForSeconds(0.2f);
+            _aimRenderer.enabled = false;
+            _renderer.enabled = false;
+
+            yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, SHOOT_RATE_MAX));
         }
-    }
-
-    private IEnumerator AppearRoutine()
-    {
-        _renderer.enabled = true;
-        _aimRenderer.enabled = true;
-        yield return new WaitForSeconds(0.3f);
-        _aimRenderer.enabled = false;
-        _renderer.enabled = false;
-    }
-
-    private void ResetShootingCondition()
-    {
-        _shootRate = Random.Range(_shootRateMin, _shootRateMax);
-        _shootTimer = 0;
     }
 }

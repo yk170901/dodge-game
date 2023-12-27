@@ -1,11 +1,16 @@
-﻿using Assets.Scripts.General;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Supply
 {
-    class SupplySpawner : MonoBehaviour, IGameOverSubscriber
+    class SupplySpawner : MonoBehaviour
     {
+        private void Awake()
+        {
+            GameManager.Instance.GameOverEvent += OnGameOver;
+        }
+
+
         public void OnGameOver()
         {
         

@@ -1,9 +1,7 @@
-using Assets.Scripts.General;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorePointSpawner : MonoBehaviour, IGameOverSubscriber
+public class ScorePointSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _scorePoint;
 
