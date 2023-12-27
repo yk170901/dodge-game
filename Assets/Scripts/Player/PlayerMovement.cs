@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,7 @@ namespace Assets.Scripts.Player
 
         private bool _isGameOver = false;
 
-        [SerializeField] private float _speed;
-        //private float _speed = 7f;
+        private float _speed = 6.5f;
 
         private void Awake()
         {
@@ -37,6 +37,24 @@ namespace Assets.Scripts.Player
 
             if (moveDirection != Vector3.zero)
                 transform.forward = moveDirection;
+        }
+
+        public void ApplySpeedBoost()
+        {
+            StartCoroutine(nameof(BoostSpeedRoutine));
+        }
+
+        private IEnumerator BoostSpeedRoutine()
+        {
+            Debug.Log("BoostSpeedRoutine Start");
+            float temp = _speed;
+
+            _speed *= 1.8f;
+
+            yield return new WaitForSeconds(5f);
+
+            _speed = temp;
+            Debug.Log("BoostSpeedRoutine End");
         }
 
         public void OnGameOver()

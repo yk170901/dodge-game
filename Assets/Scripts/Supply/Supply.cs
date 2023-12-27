@@ -13,7 +13,7 @@ namespace Assets.Scripts.Supply
 
         [SerializeField] private GameObject _parachutte;
 
-        [SerializeField] private SupplyItemSO[] _supplyItems;
+        [SerializeField] private GameObject[] _supplyItems;
 
         private string _floorTag = "Floor";
 
@@ -34,7 +34,6 @@ namespace Assets.Scripts.Supply
                 StartCoroutine(nameof(FoldParachutteRoutine));
             }
         }
-
 
         private IEnumerator FallRoutine()
         {
@@ -109,15 +108,11 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
-            //Instantiate(GetRandomSupplyItem(), transform.position, Quaternion.identity);
+            GameObject supplyItem = _supplyItems[Random.Range(0, _supplyItems.Length)];
+
+            Instantiate(supplyItem, transform.position, supplyItem.transform.rotation);
+            
             Destroy(gameObject);
-        }
-
-        private SupplyItemSO GetRandomSupplyItem()
-        {
-            int chosenIndex = Random.Range(0, 3);
-
-            return _supplyItems[chosenIndex];
         }
     }
 }
