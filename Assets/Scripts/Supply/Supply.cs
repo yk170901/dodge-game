@@ -110,7 +110,9 @@ namespace Assets.Scripts.Supply
 
             GameObject supplyItem = _supplyItems[Random.Range(0, _supplyItems.Length)];
 
-            Instantiate(supplyItem, transform.position, supplyItem.transform.rotation);
+            Instantiate(supplyItem,
+                transform.position + supplyItem.transform.position,
+                supplyItem.transform.rotation);
             
             Destroy(gameObject);
         }
