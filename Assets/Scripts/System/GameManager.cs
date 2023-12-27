@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public delegate void GameOverEventHandler();
     public event GameOverEventHandler GameOverEvent;
+
     public void EndGame() => GameOverEvent?.Invoke();
 
     public Action<float> ScoreUpEvent;

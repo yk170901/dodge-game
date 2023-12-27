@@ -10,6 +10,8 @@ public class Sniper : MonoBehaviour
 
     [SerializeField] private MeshRenderer _aimRenderer;
 
+    public System.Action ShootEvent;
+
     private Transform _target;
 
     private MeshRenderer _renderer;
@@ -58,6 +60,7 @@ public class Sniper : MonoBehaviour
             _renderer.enabled = true;
             _aimRenderer.enabled = true;
 
+            ShootEvent?.Invoke();
             ShootBullet();
 
             yield return new WaitForSeconds(0.2f);

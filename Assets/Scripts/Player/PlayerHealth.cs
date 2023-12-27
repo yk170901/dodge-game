@@ -7,10 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private bool _enableDeath = true;
 
-    private int _lives;
-
     [SerializeField] private GameObject[] _healthIndicator;
     [SerializeField] private GameObject[] _emptyHealthIndicator;
+
+    public Action HitEvent;
+
+    private int _lives;
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_lives <= 0)
             return;
+
+        HitEvent?.Invoke();
 
         _lives--;
 
