@@ -116,7 +116,9 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
-            GameObject supplyItemPrefab = _supplyItems[Random.Range(0, _supplyItems.Length)];
+            // test
+            GameObject supplyItemPrefab = _supplyItems[3];
+            //GameObject supplyItemPrefab = _supplyItems[Random.Range(0, _supplyItems.Length)];
 
             GameObject supplyItem = Instantiate(supplyItemPrefab,
                                         transform.position + supplyItemPrefab.transform.position,

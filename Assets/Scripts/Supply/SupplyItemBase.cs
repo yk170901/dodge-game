@@ -6,14 +6,23 @@ namespace Assets.Scripts.Supply
 {
     public abstract class SupplyItemBase : MonoBehaviour
     {
-        private void Awake()
-        {
-            StartCoroutine(nameof(DisappearRoutine));       
-        }
+        private float _disappearTimer = 0;
 
-        private IEnumerator DisappearRoutine()
+        private bool _isDisappearing = false;
+
+        private void Update()
         {
-            yield break;
+            _disappearTimer += Time.deltaTime;
+
+            if(_disappearTimer >= 4 && !_isDisappearing)
+            {
+                // dissolveEffect that's done in 1 sec
+            }
+            
+            if(_disappearTimer > 5)
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
