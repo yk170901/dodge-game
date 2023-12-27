@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ScorePoint : MonoBehaviour
 {
-    private bool hasBeenCollected = false;
+    private bool _hasBeenCollected = false;
 
-    private int score = 10;
+    private const int SCORE = 10;
 
     private void Awake()
     {
@@ -15,10 +15,10 @@ public class ScorePoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent(out PlayerMovement player)
-            || hasBeenCollected) return;
+            || _hasBeenCollected) return;
 
-        hasBeenCollected = true;
-        GameManager.Instance.AddScore(score);
+        _hasBeenCollected = true;
+        GameManager.Instance.AddScore(SCORE);
         GetComponentInChildren<ParticleSystem>().Stop();
     }
 }
