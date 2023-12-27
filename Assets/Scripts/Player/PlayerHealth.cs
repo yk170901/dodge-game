@@ -10,10 +10,16 @@ public class PlayerHealth : MonoBehaviour
     private int _lives;
 
     [SerializeField] private GameObject[] _healthIndicator;
+    [SerializeField] private GameObject[] _emptyHealthIndicator;
 
     private void Awake()
     {
         _lives = _healthIndicator.Length;
+
+        for(int i = 0; i < _emptyHealthIndicator.Length; i++)
+        {
+            _emptyHealthIndicator[i].SetActive(false);
+        }
     }
 
     public void TakeDamage()
@@ -21,7 +27,10 @@ public class PlayerHealth : MonoBehaviour
         if (_lives <= 0)
             return;
 
-        _healthIndicator[--_lives].SetActive(false);
+        _lives--;
+
+        _healthIndicator[_lives].SetActive(false);
+        _emptyHealthIndicator[_lives].SetActive(true);
 
         Debug.Log(_lives);
         if (_lives <= 0)
@@ -38,7 +47,10 @@ public class PlayerHealth : MonoBehaviour
         if (_lives >= _healthIndicator.Length)
             return;
 
-        _healthIndicator[_lives++].SetActive(true);
+        _healthIndicator[_lives].SetActive(true);
+        _emptyHealthIndicator[_lives].SetActive(false);
+
+        _lives++;
     }
 
     public void Die()

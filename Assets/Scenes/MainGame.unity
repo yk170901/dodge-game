@@ -7186,6 +7186,10 @@ MonoBehaviour:
   - {fileID: 7048978742694562988}
   - {fileID: 7048978742218133436}
   - {fileID: 7048978741684319926}
+  _emptyHealthIndicator:
+  - {fileID: 7048978743020004231}
+  - {fileID: 7048978742655943194}
+  - {fileID: 7048978743127918483}
 --- !u!1 &1913500344
 GameObject:
   m_ObjectHideFlags: 0
