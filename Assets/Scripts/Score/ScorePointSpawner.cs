@@ -24,6 +24,7 @@ public class ScorePointSpawner : MonoBehaviour
             scorePoint.transform.SetParent(_scorePointContainer);
 
             yield return new WaitForSeconds(3);
+            //yield return null;
         }
     }
 
