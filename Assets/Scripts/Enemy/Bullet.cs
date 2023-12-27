@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -22,8 +23,11 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Bullet")
             || other.CompareTag("Score")) return;
 
-        if (other.TryGetComponent(out Player player))
-            player.Die();
+        if (other.TryGetComponent(out PlayerMovement player))
+        {
+            PlayerHealth playerHp = FindObjectOfType<PlayerHealth>();
+            playerHp.TakeDamage();
+        }
 
         gameObject.SetActive(false);
     }

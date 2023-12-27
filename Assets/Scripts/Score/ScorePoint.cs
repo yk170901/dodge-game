@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using UnityEngine;
 
 public class ScorePoint : MonoBehaviour
@@ -13,7 +14,7 @@ public class ScorePoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent(out Player player)
+        if (!other.TryGetComponent(out PlayerMovement player)
             || hasBeenCollected) return;
 
         hasBeenCollected = true;

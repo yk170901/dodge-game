@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using UnityEngine;
 
 public class Sniper : MonoBehaviour
@@ -24,7 +25,7 @@ public class Sniper : MonoBehaviour
     {
         _renderer = GetComponent<MeshRenderer>();
 
-        _target = FindObjectOfType<Player>().transform;
+        _target = FindObjectOfType<PlayerMovement>().transform;
 
         _renderer.enabled = false;
         _aimRenderer.enabled = false;

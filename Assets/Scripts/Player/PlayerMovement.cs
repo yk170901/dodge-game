@@ -22,6 +22,8 @@ namespace Assets.Scripts.Player
         {
             _rb = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
+
+            GameManager.Instance.GameOverEvent += OnGameOver;
         }
 
         private void Update()
@@ -37,5 +39,11 @@ namespace Assets.Scripts.Player
                 transform.forward = moveDirection;
         }
 
+        public void OnGameOver()
+        {
+            _isGameOver = true;
+            _animator.SetTrigger("Die");
+            _rb.velocity = Vector3.zero;
+        }
     }
 }

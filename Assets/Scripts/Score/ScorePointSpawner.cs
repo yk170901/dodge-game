@@ -12,6 +12,7 @@ public class ScorePointSpawner : MonoBehaviour, IGameOverSubscriber
     private void Awake()
     {
         StartCoroutine(nameof(SpawnRoutine));
+        GameManager.Instance.GameOverEvent += OnGameOver;
     }
 
     private IEnumerator SpawnRoutine()
@@ -31,5 +32,7 @@ public class ScorePointSpawner : MonoBehaviour, IGameOverSubscriber
     public void OnGameOver()
     {
         StopCoroutine(nameof(SpawnRoutine));
+
+        _scorePointContainer.gameObject.SetActive(false);
     }
 }
