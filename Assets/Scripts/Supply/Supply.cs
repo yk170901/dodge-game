@@ -15,7 +15,9 @@ namespace Assets.Scripts.Supply
 
         [SerializeField] private GameObject[] _supplyItems;
 
-        private string _floorTag = "Floor";
+        public static readonly float VerticalFallingDistance = 15;
+
+        private const string FLOOR_TAG = "Floor";
 
 
         private void Awake()
@@ -25,7 +27,7 @@ namespace Assets.Scripts.Supply
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_floorTag))
+            if (other.CompareTag(FLOOR_TAG))
             {
                 StopCoroutine(nameof(FallRoutine));
 
@@ -51,7 +53,13 @@ namespace Assets.Scripts.Supply
                 positionElapsedTime += Time.deltaTime;
                 rotationElapsedTime += Time.deltaTime;
 
-                _rb.position = new Vector3(_rb.position.x, Mathf.Lerp(initialYPos, -0.01f, positionElapsedTime / 6), _rb.position.z);
+                // TODO : Cannot use Rigidbody to move position. Find out why
+                // https://forum.unity.com/threads/setting-rigidbody-position-sometimes-doesnt-change-the-position.1482804/
+                //_rb.MovePosition(new Vector3(_rb.position.x, Mathf.Lerp(initialYPos, -0.01f, positionElapsedTime / 3), _rb.position.z));
+                //_rb.position = new Vector3(_rb.position.x, Mathf.Lerp(initialYPos, -0.01f, positionElapsedTime / 3), _rb.position.z);
+                // this one below works tho
+                //transform.position = new Vector3(_rb.position.x, Mathf.Lerp(initialYPos, -0.01f, positionElapsedTime / 3), _rb.position.z);
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(initialYPos, -0.01f, positionElapsedTime / 3), transform.position.z);
 
                 _rb.rotation = Quaternion.Lerp(from, to, rotationElapsedTime / 1.6f);
 
@@ -108,12 +116,16 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
-            GameObject supplyItem = _supplyItems[Random.Range(0, _supplyItems.Length)];
+            GameObject supplyItemPrefab = _supplyItems[Random.Range(0, _supplyItems.Length)];
 
-            Instantiate(supplyItem,
-                transform.position + supplyItem.transform.position,
-                supplyItem.transform.rotation);
-            
+            GameObject supplyItem = Instantiate(supplyItemPrefab,
+                                        transform.position + supplyItemPrefab.transform.position,
+                                        supplyItemPrefab.transform.rotation);
+
+            Debug.Log(transform.parent.name);
+            supplyItem.transform.SetParent(transform.parent);
+            // TODO : make supply items always face camera
+
             Destroy(gameObject);
         }
     }
