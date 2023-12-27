@@ -1,14 +1,12 @@
 ﻿using Assets.Scripts.Player;
+using Assets.Scripts.Supply;
 using UnityEngine;
 
-public class SpeedBoost : MonoBehaviour
+public class SpeedBoost : SupplyItemBase
 {
-    private void OnTriggerEnter(Collider other)
+    protected override void OnPlayerCollectItem(Collider other)
     {
-        if (other.TryGetComponent(out PlayerMovement player))
-        {
-            player.ApplySpeedBoost();
-            Destroy(gameObject);
-        }
+        other.TryGetComponent(out PlayerMovement playerMovement);
+        playerMovement.ApplySpeedBoost();
     }
 }

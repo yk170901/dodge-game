@@ -1,14 +1,14 @@
 using Assets.Scripts.Player;
+using Assets.Scripts.Supply;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Assets.Scripts.Supply.SupplyItems
 {
-    private void OnTriggerEnter(Collider other)
+    public class Health : SupplyItemBase
     {
-        if(other.TryGetComponent(out PlayerMovement player))
+        protected override void OnPlayerCollectItem(Collider other)
         {
             FindObjectOfType<PlayerHealth>().RecoverHealth();
-            Destroy(gameObject);
         }
     }
 }

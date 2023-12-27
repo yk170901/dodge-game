@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
+
     private AudioSource _audioSource;
 
     [SerializeField]
@@ -15,13 +18,24 @@ public class AudioManager : MonoBehaviour
     private AudioClip _hitClip;
 
     [SerializeField]
-    private AudioClip _audioClip3;
+    private AudioClip _itemPickupClip;
 
     [SerializeField]
     private AudioClip _audioClip4;
 
     void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
+
+
         GameManager.Instance.GameOverEvent += OnGameOver;
         GameManager.Instance.ScoreUpEvent += OnScored;
 
@@ -34,8 +48,13 @@ public class AudioManager : MonoBehaviour
 
         for (int i = 0; i < snipers.Length; i++)
         {
-            snipers[i].ShootEvent += PlayBulletShootingSound;
+            snipers[i].ShootEvent += OnShootingBullet;
         }
+    }
+
+    public void PlayerItemPickUpSound()
+    {
+        _audioSource.PlayOneShot(_itemPickupClip);
     }
 
     private void OnGameOver()
@@ -54,7 +73,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    private void PlayBulletShootingSound()
+    private void OnShootingBullet()
     {
         _audioSource.PlayOneShot(_bulletShootingClip);
     }

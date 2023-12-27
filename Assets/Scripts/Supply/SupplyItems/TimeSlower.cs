@@ -1,14 +1,10 @@
 ﻿using Assets.Scripts.Player;
+using Assets.Scripts.Supply;
 using UnityEngine;
 
-public class TimeSlower : MonoBehaviour
+public class TimeSlower : SupplyItemBase
 {
-    private void OnTriggerEnter(Collider other)
+    protected override void OnPlayerCollectItem(Collider other)
     {
-        if (other.TryGetComponent(out PlayerMovement player))
-        {
-            //
-            Destroy(gameObject);
-        }
     }
 }

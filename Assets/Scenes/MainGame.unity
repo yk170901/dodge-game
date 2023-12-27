@@ -715,7 +715,7 @@ MonoBehaviour:
   _bulletShootingClip: {fileID: 8300000, guid: 29a0596e6c2265a4387ff5fbc8140c59, type: 3}
   _scorePointCollectedClip: {fileID: 8300000, guid: 3b6090407b951ac4eb7bd49b323be214, type: 3}
   _hitClip: {fileID: 8300000, guid: a13fbb23fc5ee0c4a837f3a42c70ae72, type: 3}
-  _audioClip3: {fileID: 0}
+  _itemPickupClip: {fileID: 8300000, guid: fd0871ee7076ed249b462bd8c56c8660, type: 3}
   _audioClip4: {fileID: 0}
 --- !u!1 &201833434
 GameObject:
