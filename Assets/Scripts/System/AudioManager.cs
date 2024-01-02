@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip _itemPickupClip;
 
+    [SerializeField]
+    private AudioClip _gameOverClip;
+
 
     void Awake()
     {
@@ -36,8 +39,8 @@ public class AudioManager : MonoBehaviour
         }
 
 
-        GameManager.Instance.GameOverEvent += OnGameOver;
         GameManager.Instance.ScoreUpEvent += OnScored;
+        GameManager.Instance.GameOverEvent += OnGameOver;
 
         _audioSource = GetComponent<AudioSource>();
 
@@ -62,7 +65,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnGameOver()
     {
-
+        _audioSource.PlayOneShot(_gameOverClip);
     }
 
     private void OnBulletHitPlayer()
