@@ -17,7 +17,7 @@ public class Sniper : MonoBehaviour
     private MeshRenderer _renderer;
 
     private const float SHOOT_RATE_MIN = 0.3f;
-    private const float SHOOT_RATE_MAX = 5f;
+    private float _shootRateMax = 5f;
 
     private void Start()
     {
@@ -30,6 +30,20 @@ public class Sniper : MonoBehaviour
 
         GameManager.Instance.GameOverEvent += OnGameOver;
         StartCoroutine(nameof(ShootRoutine));
+        StartCoroutine(nameof(RaiseDifficultyRoutine));
+    }
+
+    private IEnumerator RaiseDifficultyRoutine()
+    {
+        int count = 0;
+        while(_shootRateMax > 3f)
+        {
+            count++;
+            Debug.Log(count);
+            _shootRateMax -= Time.deltaTime;
+
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     private void OnGameOver()
@@ -53,7 +67,7 @@ public class Sniper : MonoBehaviour
 
     private IEnumerator ShootRoutine()
     {
-        yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, SHOOT_RATE_MAX));
+        yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, _shootRateMax));
 
         while (true)
         {
@@ -67,7 +81,7 @@ public class Sniper : MonoBehaviour
             _aimRenderer.enabled = false;
             _renderer.enabled = false;
 
-            yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, SHOOT_RATE_MAX));
+            yield return new WaitForSeconds(Random.Range(SHOOT_RATE_MIN, _shootRateMax));
         }
     }
 }

@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(0.1f); 
         particleSetting.simulationSpeed = 1f;
 
-        yield return new WaitForSeconds(5); // shield time
+        yield return new WaitForSeconds(7); // shield time
 
         particleSetting.simulationSpeed = 5f;
         _isShielding = false;

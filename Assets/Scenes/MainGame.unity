@@ -717,6 +717,7 @@ MonoBehaviour:
   _hitPlayerClip: {fileID: 8300000, guid: a13fbb23fc5ee0c4a837f3a42c70ae72, type: 3}
   _hitShieldClip: {fileID: 8300000, guid: eebb4809e2f05804cb3aa4f5d43f9daa, type: 3}
   _itemPickupClip: {fileID: 8300000, guid: fd0871ee7076ed249b462bd8c56c8660, type: 3}
+  _gameOverClip: {fileID: 8300000, guid: b1522f5c06a8dcb41bd1af8ec50ed74c, type: 3}
 --- !u!1 &201833434
 GameObject:
   m_ObjectHideFlags: 0
