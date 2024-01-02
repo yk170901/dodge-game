@@ -20,14 +20,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet")
-            || other.CompareTag("Score")) return;
-
-        if (other.TryGetComponent(out PlayerMovement player))
+        if (other.CompareTag("Player"))
         {
             PlayerHealth playerHp = FindObjectOfType<PlayerHealth>();
             playerHp.TakeDamage();
         }
+        else if (!other.CompareTag("Fence"))
+            return;
 
         gameObject.SetActive(false);
     }

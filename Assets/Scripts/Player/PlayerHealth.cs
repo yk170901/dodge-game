@@ -12,7 +12,8 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private ParticleSystem _shield;
 
-    public Action HitEvent;
+    public Action HitPlayerEvent;
+    public Action HitShieldEvent;
 
     private int _lives;
 
@@ -54,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
 
         yield return new WaitForSeconds(5); // shield time
 
+        particleSetting.simulationSpeed = 5f;
         _isShielding = false;
         _shield.Stop();
     }
@@ -61,12 +63,15 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         if (_isShielding)
+        {
+            HitShieldEvent?.Invoke();
             return;
+        }
 
         if (_lives <= 0)
             return;
 
-        HitEvent?.Invoke();
+        HitPlayerEvent?.Invoke();
 
         _lives--;
 

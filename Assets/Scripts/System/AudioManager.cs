@@ -5,7 +5,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-
     private AudioSource _audioSource;
 
     [SerializeField]
@@ -15,13 +14,14 @@ public class AudioManager : MonoBehaviour
     private AudioClip _scorePointCollectedClip;
 
     [SerializeField]
-    private AudioClip _hitClip;
+    private AudioClip _hitPlayerClip;
+
+    [SerializeField]
+    private AudioClip _hitShieldClip;
 
     [SerializeField]
     private AudioClip _itemPickupClip;
 
-    [SerializeField]
-    private AudioClip _audioClip4;
 
     void Awake()
     {
@@ -41,7 +41,10 @@ public class AudioManager : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
 
-        FindObjectOfType<PlayerHealth>().HitEvent += OnBulletHitPlayer;
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+
+        playerHealth.HitPlayerEvent += OnBulletHitPlayer;
+        playerHealth.HitShieldEvent += OnBulletHitShield;
 
 
         Sniper[] snipers = FindObjectsOfType<Sniper>();
@@ -64,8 +67,14 @@ public class AudioManager : MonoBehaviour
 
     private void OnBulletHitPlayer()
     {
-        _audioSource.PlayOneShot(_hitClip);
+        _audioSource.PlayOneShot(_hitPlayerClip);
     }
+
+    private void OnBulletHitShield()
+    {
+        _audioSource.PlayOneShot(_hitShieldClip);
+    }
+
 
     private void OnScored(float _)
     {
