@@ -1,15 +1,5 @@
 # Dodge Game
 
-## To-dos
-**Sound**
-- Main
-  - start/restart
-  - game over
-- Player
-  - die
-- Bullet
-  - hit shield
-
 ## Preview
 [png file here]
 
@@ -20,5 +10,7 @@
 "Wall Clock" (https://skfb.ly/6V7Ou) by FelipeMSX is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 Score Point Collect Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Creating Background Music and Effects</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Pixabay</a>
 Bullet Shooting Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=41134">Pixabay</a>
-Bullet Hit Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14845">Pixabay</a>
+Player Hit Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14845">Pixabay</a>
+Shield Hit Sound Effect by <a href="https://pixabay.com/users/sectionsound-34536612/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=143940">Ryan Lewis</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=143940">Pixabay</a>
 Item Pick-up Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140376">Creating Background Music and Effects</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140376">Pixabay</a>
+Game Over Sound Effect by <a href="https://pixabay.com/users/audiosto-40753689/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=179699">Audiosto</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=179699">Pixabay</a>
