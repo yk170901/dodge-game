@@ -1,42 +1,13 @@
 # Dodge Game
 
 ## To-dos
-**Supply**
-- spawn supply
-- animation (revealing animation)
-- functions
-  - collect effect
-  - disappear
-  - disolve shader effect (*optional)
-
-**Health**
-- lower when hit by bullet
-- recover by health item
-
 **Sound**
 - Main
-  - main music
   - start/restart
   - game over
-- Score point
-  - being present, 웅웅거리는 소리 내기
-  - disappear
-  - collected (hit)
 - Player
   - die
-  - hit
-  - walk ???? 
-- Supply
-  - falling
-  - disappear
-  - collected
-    - heart *(once when collected)*
-    - shiled *(once when collected)*
-    - boot *(play while on dash)*
-    - time-slower *(make main music slow)*
 - Bullet
-  - shoot
-  - hit player
   - hit shield
 
 ## Preview
@@ -47,3 +18,7 @@
 "Crusader Shield" (https://skfb.ly/6xnEo) by Multipainkiller Studio is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Boot For Ray II" (https://skfb.ly/6TA7q) by ChamberSu1996 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Wall Clock" (https://skfb.ly/6V7Ou) by FelipeMSX is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Score Point Collect Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Creating Background Music and Effects</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Pixabay</a>
+Bullet Shooting Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=41134">Pixabay</a>
+Bullet Hit Sound Effect from <a href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14845">Pixabay</a>
+Item Pick-up Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140376">Creating Background Music and Effects</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140376">Pixabay</a>
