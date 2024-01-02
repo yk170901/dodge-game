@@ -6,7 +6,6 @@ public class SpeedBoost : SupplyItemBase
 {
     protected override void OnPlayerCollectItem(Collider other)
     {
-        other.TryGetComponent(out PlayerMovement playerMovement);
-        playerMovement.ApplySpeedBoost();
+        other.GetComponent<PlayerMovement>().ApplySpeedBoost();
     }
 }

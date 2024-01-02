@@ -6,6 +6,6 @@ public class Shield : SupplyItemBase
 {
     protected override void OnPlayerCollectItem(Collider other)
     {
-
+        FindObjectOfType<PlayerHealth>().ApplyShield();
     }
 }

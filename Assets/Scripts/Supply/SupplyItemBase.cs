@@ -27,7 +27,7 @@ namespace Assets.Scripts.Supply
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerMovement player))
+            if (other.CompareTag("Player"))
             {
                 OnPlayerCollectItem(other);
 

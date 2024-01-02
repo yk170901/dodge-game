@@ -30,8 +30,7 @@ namespace Assets.Scripts.Supply
 
                 scorePoint.transform.SetParent(_supplyContainer);
 
-                //yield return new WaitForSeconds(3);
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(Random.Range(5,15));
             }
         }
 

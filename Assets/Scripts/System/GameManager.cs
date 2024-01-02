@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,4 +20,17 @@ public class GameManager : MonoBehaviour
         if (_instance == null) _instance = this;
     }
 
+    public void ApplyTimeSlower()
+    {
+        StartCoroutine(nameof(SlowDownTimeRoutine));
+    }
+
+    private IEnumerator SlowDownTimeRoutine()
+    {
+        Time.timeScale = 0.5f;
+
+        yield return new WaitForSeconds(2.5f); // 5sec irl
+
+        Time.timeScale = 1;
+    }
 }
