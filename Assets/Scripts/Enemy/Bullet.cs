@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float _speed = 11f;
+    private float _speed = 12f;
     
     public void SetDirection(Vector3 direction, float speedMultiplyer = 1)
     {
