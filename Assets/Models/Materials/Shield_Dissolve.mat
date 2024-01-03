@@ -47,7 +47,7 @@ Material:
     - Vector1_1: 0.5
     - Vector1_92892d8660ca49eb90963e7d0656014a: 30
     - Vector1_b70f80e56f5a4a41902a2d0d4e6f2862: 0.1
-    - _DissolveProgress: 1.0000561
+    - _DissolveProgress: 0.91617376
     m_Colors:
     - Color_0c9b4e5f2b104dcea1ef43012cbe02dc: {r: 0, g: 0.8982549, b: 1, a: 0}
   m_BuildTextureStacks: []
