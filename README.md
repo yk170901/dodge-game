@@ -1,7 +1,8 @@
 # Dodge Game
 
 ## Preview
-[gameplay-overview](_Resources/gameplay-overview.png)
+![gameplay-overview](_Resources/gameplay-overview.png)
+<img src="gameplay-screenshot](_Resources/gameplay-screenshot.png" alt="screenshot"/>
 [gameplay-screenshot](_Resources/gameplay-screenshot.png)
 
 ## Credit
