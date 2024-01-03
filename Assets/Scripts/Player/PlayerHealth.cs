@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private bool _enableDeath = true;
-
     [SerializeField] private GameObject[] _healthIndicator;
     [SerializeField] private GameObject[] _emptyHealthIndicator;
 
@@ -18,14 +16,6 @@ public class PlayerHealth : MonoBehaviour
     private int _lives;
 
     private bool _isShielding = false;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ApplyShield();
-        }
-    }
 
     private void Awake()
     {
@@ -52,7 +42,6 @@ public class PlayerHealth : MonoBehaviour
         particleSetting.simulationSpeed = 5f;
         yield return new WaitForSeconds(0.1f); 
         particleSetting.simulationSpeed = 1f;
-        Debug.Log(particleSetting.simulationSpeed);
 
         yield return new WaitForSeconds(7); // shield time
 
@@ -99,9 +88,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        // variable for testing
-        //if (!_enableDeath) return;
-
         GameManager.Instance.EndGame();
     }
 }

@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469d44ae2594460419b64b6c10b829fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 5934349461449181200}
+  dissolveRenderer: {fileID: 5934349461449181200}
   dissolveMaterial: {fileID: 2100000, guid: ac8ba262e5c134b449c98021df889b90, type: 2}
-  _material: {fileID: 2100000, guid: 47d278b4bf9afb5478a15120e9d64357, type: 2}
 --- !u!65 &8824738697861617642
 BoxCollider:
   m_ObjectHideFlags: 0

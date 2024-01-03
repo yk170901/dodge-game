@@ -22,7 +22,22 @@ namespace Assets.Scripts.Supply
 
         private void Awake()
         {
+            GameManager.Instance.GameOverEvent += OnGameOver;
             StartCoroutine(nameof(FallRoutine));
+        }
+
+        private void OnGameOver()
+        {
+            // if not destroyed yet
+            try
+            {
+                StopAllCoroutines();
+                Destroy(gameObject);
+            }
+            catch (System.Exception)
+            {
+                Debug.Log("Tried Accessing to Destroyed Object");
+            }
         }
 
         private void OnTriggerEnter(Collider other)

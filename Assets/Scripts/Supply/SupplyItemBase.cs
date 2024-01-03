@@ -9,7 +9,7 @@ namespace Assets.Scripts.Supply
 {
     public abstract class SupplyItemBase : MonoBehaviour
     {
-        [SerializeField] protected Renderer renderer;
+        [SerializeField] protected Renderer dissolveRenderer;
 
         [SerializeField] protected Material dissolveMaterial;
 
@@ -18,6 +18,13 @@ namespace Assets.Scripts.Supply
         private bool _isDisappearing = false;
         protected float dissolveSpeed = 0.2f;
 
+        private bool _isDestroyed = false;
+
+        private void OnDestroy()
+        {
+            _isDestroyed = true;
+        }
+
         private void Awake()
         {
             GameManager.Instance.GameOverEvent += OnGameOver;
@@ -25,9 +32,12 @@ namespace Assets.Scripts.Supply
 
         private void OnGameOver()
         {
-            if(gameObject != null)
+            if(!_isDestroyed)
             {
+                StopCoroutine(nameof(PlayDissolveEffect));
+
                 gameObject.SetActive(false);
+
                 Destroy(gameObject);
             }
         }
@@ -45,15 +55,17 @@ namespace Assets.Scripts.Supply
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player")
+            if (!_isDestroyed
+                && other.CompareTag("Player")
                 && !_isDisappearing)
             {
                 OnPlayerCollectItem(other);
 
                 AudioManager.Instance.PlayerItemPickUpSound();
 
-                if (gameObject != null)
-                    Destroy(gameObject);
+                StopCoroutine(nameof(PlayDissolveEffect));
+
+                Destroy(gameObject);
             }
         }
 
@@ -63,7 +75,7 @@ namespace Assets.Scripts.Supply
         {
             // assign clone for sine time. if directly assign the original, sine time is not new, and cause different shader behaviour depending on the sine time
             Material mat = new Material(dissolveMaterial);
-            renderer.material = mat;
+            dissolveRenderer.material = mat;
 
             float progress = 0;
 
@@ -74,7 +86,7 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
-            if(gameObject != null)
+            if(!_isDestroyed)
                 Destroy(gameObject);
         }
     }

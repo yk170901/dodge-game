@@ -13,12 +13,12 @@ public class SpeedBoost : SupplyItemBase
     // https://chat.openai.com/c/1e825507-e3b4-4122-9bf0-c1e016d9c419
     protected override IEnumerator PlayDissolveEffect()
     {
-        Material[] copy = new Material[renderer.materials.Length];
+        Material[] copy = new Material[dissolveRenderer.materials.Length];
         for (int i = 0; i < copy.Length; i++)
         {
             copy[i] = new Material(dissolveMaterial);
         }
-        renderer.materials = copy;
+        dissolveRenderer.materials = copy;
 
 
         float progress = 0;

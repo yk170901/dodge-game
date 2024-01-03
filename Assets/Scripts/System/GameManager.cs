@@ -7,7 +7,13 @@ public class GameManager : MonoBehaviour
     public delegate void GameOverEventHandler();
     public event GameOverEventHandler GameOverEvent;
 
-    public void EndGame() => GameOverEvent?.Invoke();
+    public void EndGame()
+    {
+        if (Time.timeScale != 1)
+            Time.timeScale = 1;
+
+        GameOverEvent?.Invoke();
+    }
 
     public Action<float> ScoreUpEvent;
     public void AddScore(float score) => ScoreUpEvent?.Invoke(score);

@@ -8,8 +8,6 @@ namespace Assets.Scripts.Supply
         [SerializeField] private GameObject _supply;
         [SerializeField] private Transform _supplyContainer;
 
-        private float _spawnHeight = 13;
-
         private void Awake()
         {
             GameManager.Instance.GameOverEvent += OnGameOver;
