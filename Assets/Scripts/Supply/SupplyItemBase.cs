@@ -1,7 +1,10 @@
 ﻿using Assets.Scripts.Player;
+using System;
 using System.Collections;
 using UnityEngine;
 
+// helped me a lot
+// https://chat.openai.com/c/1e825507-e3b4-4122-9bf0-c1e016d9c419
 namespace Assets.Scripts.Supply
 {
     public abstract class SupplyItemBase : MonoBehaviour
@@ -13,6 +16,21 @@ namespace Assets.Scripts.Supply
         private float _disappearTimer = 0;
 
         private bool _isDisappearing = false;
+        protected float dissolveSpeed = 0.2f;
+
+        private void Awake()
+        {
+            GameManager.Instance.GameOverEvent += OnGameOver;
+        }
+
+        private void OnGameOver()
+        {
+            if(gameObject != null)
+            {
+                gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
+        }
 
         private void Update()
         {
@@ -21,11 +39,7 @@ namespace Assets.Scripts.Supply
             if(_disappearTimer >= 4 && !_isDisappearing)
             {
                 _isDisappearing = true;
-                PlayDissolveEffect();
-            }
-            else if(_disappearTimer > 10)
-            {
-                Destroy(gameObject);
+                StartCoroutine(PlayDissolveEffect());
             }
         }
 
@@ -37,18 +51,31 @@ namespace Assets.Scripts.Supply
                 OnPlayerCollectItem(other);
 
                 AudioManager.Instance.PlayerItemPickUpSound();
-                Destroy(gameObject);
+
+                if (gameObject != null)
+                    Destroy(gameObject);
             }
         }
 
         protected abstract void OnPlayerCollectItem(Collider other);
 
-        // may need customization if
-        // (1) there are multiple materials for the item like TimeSlower
-        // (2) or one material that's applied to many parts of the model like SpeedBoost
-        protected virtual void PlayDissolveEffect()
+        protected virtual IEnumerator PlayDissolveEffect()
         {
-            renderer.material = dissolveMaterial;
+            // assign clone for sine time. if directly assign the original, sine time is not new, and cause different shader behaviour depending on the sine time
+            Material mat = new Material(dissolveMaterial);
+            renderer.material = mat;
+
+            float progress = 0;
+
+            while (progress < 1)
+            {
+                progress += Time.deltaTime * dissolveSpeed;
+                mat.SetFloat("_DissolveProgress", progress);
+                yield return null;
+            }
+
+            if(gameObject != null)
+                Destroy(gameObject);
         }
     }
 }

@@ -117,12 +117,12 @@ namespace Assets.Scripts.Supply
             }
 
             GameObject supplyItemPrefab = _supplyItems[Random.Range(0, _supplyItems.Length)];
+            //GameObject supplyItemPrefab = _supplyItems[2];
 
             GameObject supplyItem = Instantiate(supplyItemPrefab,
                                         transform.position + supplyItemPrefab.transform.position,
                                         supplyItemPrefab.transform.rotation);
 
-            Debug.Log(transform.parent.name);
             supplyItem.transform.SetParent(transform.parent);
             // TODO : make supply items always face camera
 

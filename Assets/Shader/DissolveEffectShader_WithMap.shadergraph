@@ -23,6 +23,9 @@
         },
         {
             "m_Id": "88e9713789064d9781a9cb04fb468167"
+        },
+        {
+            "m_Id": "eb067381edf7428ca02347dfbb041660"
         }
     ],
     "m_Keywords": [],
@@ -110,6 +113,9 @@
         },
         {
             "m_Id": "e8a8e6b1829444359bb940bbea36b1e5"
+        },
+        {
+            "m_Id": "1f7c8f6542f049c0b66e429862b7246b"
         }
     ],
     "m_GroupDatas": [],
@@ -174,6 +180,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "1f7c8f6542f049c0b66e429862b7246b"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "70a96b9de8fb4cc1b74a3947e56338a3"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "24dc160289e54c27b917d9fe6d1e9a64"
                 },
                 "m_SlotId": 0
@@ -195,20 +215,6 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "092d2c50a15840f6881092cbccc57db4"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "38cb1673f2234593abeb1e8f6d7a7150"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "70a96b9de8fb4cc1b74a3947e56338a3"
                 },
                 "m_SlotId": 0
             }
@@ -910,6 +916,41 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "1f7c8f6542f049c0b66e429862b7246b",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1246.0,
+            "y": 406.0,
+            "width": 168.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "460e4379f72c4827abd8f4cfd468058b"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "eb067381edf7428ca02347dfbb041660"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "228faf6ff4fb47efb4331a6e30cd90f4",
     "m_Id": 0,
@@ -1143,7 +1184,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1267.0,
+            "x": -1394.0,
             "y": 367.0,
             "width": 126.0,
             "height": 173.0
@@ -1333,6 +1374,21 @@
     "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_BareResource": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "460e4379f72c4827abd8f4cfd468058b",
+    "m_Id": 0,
+    "m_DisplayName": "DissolveProgress",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -1695,7 +1751,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -2877,6 +2933,29 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "eb067381edf7428ca02347dfbb041660",
+    "m_Guid": {
+        "m_GuidSerialized": "8a435e39-c9a9-45f7-9b0a-43fadef95d72"
+    },
+    "m_Name": "DissolveProgress",
+    "m_DefaultReferenceName": "Vector1_eb067381edf7428ca02347dfbb041660",
+    "m_OverrideReferenceName": "_DissolveProgress",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,21 @@ namespace Assets.Scripts.Supply
         [SerializeField] private MeshRenderer _renderer;
         [SerializeField] private Material _dissolveMaterial;
 
-        public void PlayDissolveEffect()
+        public IEnumerator PlayDissolveEffect(float dissolveSpeed)
         {
-            Debug.Log("helper changing mat");
-            _renderer.material = _dissolveMaterial;
+            Material mat = new Material(_dissolveMaterial);
+            _renderer.material = mat;
+
+            float progress = 0;
+
+            while (progress < 1)
+            {
+                progress += Time.deltaTime * dissolveSpeed;
+                mat.SetFloat("_DissolveProgress", progress);
+                yield return null;
+            }
+
+            Destroy(gameObject);
         }
     }
 }

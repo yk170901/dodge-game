@@ -19,6 +19,8 @@ public class Sniper : MonoBehaviour
     private const float SHOOT_RATE_MIN = 0.3f;
     private float _shootRateMax = 5f;
 
+    private float _bulletSpeedMultiplayer = 1;
+
     private void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
@@ -35,12 +37,24 @@ public class Sniper : MonoBehaviour
 
     private IEnumerator RaiseDifficultyRoutine()
     {
-        int count = 0;
-        while(_shootRateMax > 3f)
+        bool isShootRateDifficultyMax = false;
+        bool isBulletSpeedDifficultyMax = false;
+
+        while(!isShootRateDifficultyMax
+            || !isBulletSpeedDifficultyMax)
         {
-            count++;
-            Debug.Log(count);
-            _shootRateMax -= Time.deltaTime;
+
+            if (!isShootRateDifficultyMax)
+            {
+                _shootRateMax -= Time.deltaTime;
+                isShootRateDifficultyMax = _shootRateMax >= 3;
+            }
+
+            if (!isBulletSpeedDifficultyMax)
+            {
+                _bulletSpeedMultiplayer += 0.02f;
+                isBulletSpeedDifficultyMax = _bulletSpeedMultiplayer <= 1.3f;
+            }
 
             yield return new WaitForSeconds(10f);
         }

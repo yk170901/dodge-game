@@ -46,7 +46,6 @@ namespace Assets.Scripts.Player
 
         private IEnumerator BoostSpeedRoutine()
         {
-            Debug.Log("BoostSpeedRoutine Start");
             float temp = _speed;
 
             _speed *= 1.8f;
@@ -54,7 +53,6 @@ namespace Assets.Scripts.Player
             yield return new WaitForSeconds(5f);
 
             _speed = temp;
-            Debug.Log("BoostSpeedRoutine End");
         }
 
         public void OnGameOver()

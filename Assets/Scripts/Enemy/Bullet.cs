@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private readonly float _speed = 13f;
+    private float _speed = 11f;
     
-    public void SetDirection(Vector3 direction)
+    public void SetDirection(Vector3 direction, float speedMultiplyer = 1)
     {
+        if (speedMultiplyer != 1)
+            _speed *= speedMultiplyer;
+
         GetComponent<Rigidbody>().velocity = _speed * direction.normalized;
         transform.forward = direction;
 

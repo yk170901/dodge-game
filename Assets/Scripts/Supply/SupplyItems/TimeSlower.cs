@@ -10,9 +10,15 @@ public class TimeSlower : SupplyItemBase
         GameManager.Instance.ApplyTimeSlower();
     }
 
-    protected override void PlayDissolveEffect()
+    protected override IEnumerator PlayDissolveEffect()
     {
-        SupplySubpartDissolveEffectApplyHelper helper = GetComponentInChildren<SupplySubpartDissolveEffectApplyHelper>();
-        helper.PlayDissolveEffect();
+        SupplySubpartDissolveEffectApplyHelper[] helpers = GetComponentsInChildren<SupplySubpartDissolveEffectApplyHelper>();
+        
+        foreach(SupplySubpartDissolveEffectApplyHelper helper in helpers)
+        {
+            StartCoroutine(helper.PlayDissolveEffect(dissolveSpeed));
+        }
+
+        yield return null;
     }
 }

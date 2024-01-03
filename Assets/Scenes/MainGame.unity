@@ -8170,7 +8170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3899657064674106750, guid: 77014ce1227caab4fbd231d615b91f4d, type: 3}
       propertyPath: m_Name
-      value: Shield
+      value: Shield Particle System
       objectReference: {fileID: 0}
     - target: {fileID: 3899657064674106750, guid: 77014ce1227caab4fbd231d615b91f4d, type: 3}
       propertyPath: m_IsActive

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Player;
 using Assets.Scripts.Supply;
+using System.Collections;
 using UnityEngine;
 
 public class SpeedBoost : SupplyItemBase
@@ -9,11 +10,31 @@ public class SpeedBoost : SupplyItemBase
         other.GetComponent<PlayerMovement>().ApplySpeedBoost();
     }
 
-    protected override void PlayDissolveEffect()
+    // https://chat.openai.com/c/1e825507-e3b4-4122-9bf0-c1e016d9c419
+    protected override IEnumerator PlayDissolveEffect()
     {
-        for (int i = 0; i < renderer.materials.Length; i++)
+        Material[] copy = new Material[renderer.materials.Length];
+        for (int i = 0; i < copy.Length; i++)
         {
-            renderer.materials[i] = dissolveMaterial;
+            copy[i] = new Material(dissolveMaterial);
         }
+        renderer.materials = copy;
+
+
+        float progress = 0;
+
+        while (progress < 1)
+        {
+            progress += Time.deltaTime * dissolveSpeed;
+
+            for (int i = 0; i < copy.Length; i++)
+            {
+                copy[i].SetFloat("_DissolveProgress", progress);
+            }
+
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }
