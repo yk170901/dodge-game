@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,8 +44,20 @@ public class MainCanvas : MonoBehaviour
 
             _timeText.text = $"{_totalScore: 0.0}";
         }
-        else if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator CheckIfRestartKeyPressed()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 
     private void OnGameOver()
@@ -54,6 +67,8 @@ public class MainCanvas : MonoBehaviour
         _gameOverElementContainer.SetActive(true);
 
         _recordText.text = $"Best Record {FetchBestRecord(): 0.0}";
+
+        StartCoroutine(nameof(CheckIfRestartKeyPressed));
     }
 
     private float FetchBestRecord()

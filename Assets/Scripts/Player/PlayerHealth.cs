@@ -81,8 +81,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (_lives <= 0)
         {
-            Debug.Log("die");
-
             Die();
             return;
         }
