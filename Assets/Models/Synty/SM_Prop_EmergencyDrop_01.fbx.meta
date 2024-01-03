@@ -1,15 +1,35 @@
 fileFormatVersion: 2
-guid: 4597f712ca0122341a181ab6f2f78e2f
-timeCreated: 1536802444
+guid: 1a82239eb98b56943a1ee577f956fbb4
+timeCreated: 1536626380
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: SM_Prop_EmergencyDrop_01_Contents
+    100004: SM_Prop_EmergencyDrop_01_Harness
+    100006: SM_Prop_EmergencyDrop_01_Lid
+    100008: SM_Prop_EmergencyDrop_01_Parachute
     400000: //RootNode
+    400002: SM_Prop_EmergencyDrop_01_Contents
+    400004: SM_Prop_EmergencyDrop_01_Harness
+    400006: SM_Prop_EmergencyDrop_01_Lid
+    400008: SM_Prop_EmergencyDrop_01_Parachute
     2300000: //RootNode
+    2300002: SM_Prop_EmergencyDrop_01_Contents
+    2300004: SM_Prop_EmergencyDrop_01_Harness
+    2300006: SM_Prop_EmergencyDrop_01_Lid
+    2300008: SM_Prop_EmergencyDrop_01_Parachute
     3300000: //RootNode
-    4300000: SM_Wep_Pistol_Ammo_01
+    3300002: SM_Prop_EmergencyDrop_01_Contents
+    3300004: SM_Prop_EmergencyDrop_01_Harness
+    3300006: SM_Prop_EmergencyDrop_01_Lid
+    3300008: SM_Prop_EmergencyDrop_01_Parachute
+    4300000: SM_Prop_EmergencyDrop_01
+    4300002: SM_Prop_EmergencyDrop_01_Lid
+    4300004: SM_Prop_EmergencyDrop_01_Contents
+    4300006: SM_Prop_EmergencyDrop_01_Parachute
+    4300008: SM_Prop_EmergencyDrop_01_Harness
     9500000: //RootNode
   materials:
     importMaterials: 0

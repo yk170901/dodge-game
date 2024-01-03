@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4597f712ca0122341a181ab6f2f78e2f
-timeCreated: 1536802444
+guid: dacc42cfe6fdf3548b8738c739e4969c
+timeCreated: 1536112279
 licenseType: Store
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_Wep_Pistol_Ammo_01
+    4300000: SM_Wep_Crosshair_Sniper_01
     9500000: //RootNode
   materials:
     importMaterials: 0
