@@ -1,5 +1,10 @@
 # Dodge Game
 
+**TODO LATER**
+- When consume speedBoost while already on it
+- same abt shield
+- WebGL not working
+
 ## Preview
 ![gameplay-overview](_Resources/gameplay-overview.png)
 ![gameplay-screenshot](_Resources/gameplay-screenshot.png)
