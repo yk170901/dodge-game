@@ -42,14 +42,25 @@ namespace Assets.Scripts.Supply
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("0. Supply Hit Something");
+
             if (other.CompareTag(FLOOR_TAG))
             {
+                Debug.Log(" 1. It was Floor");
                 StopCoroutine(nameof(FallRoutine));
+
+                Debug.Log("2. Fall Routine has stopped");
 
                 _rb.rotation = Quaternion.identity;
 
+                Debug.Log("3. rotation is frozen");
+
                 StartCoroutine(nameof(FoldParachutteRoutine));
+                
+                Debug.Log("4. Now Folding Parachutte");
             }
+
+            Debug.Log("You should've seen 5 messages (including 0th message)");
         }
 
         private IEnumerator FallRoutine()
@@ -93,6 +104,7 @@ namespace Assets.Scripts.Supply
 
         private IEnumerator FoldParachutteRoutine()
         {
+            Debug.Log("FoldParachutteRoutine 0");
             // shrink parashutte height
             float minScale = 0.1f;
             float yElapsedTime = 0;
@@ -100,6 +112,7 @@ namespace Assets.Scripts.Supply
 
             while (_parachutte.transform.localScale.y > minScale)
             {
+                Debug.Log("FoldParachutteRoutine 1 - while");
                 yElapsedTime += Time.deltaTime;
 
                 _parachutte.transform.localScale = new Vector3(
@@ -111,6 +124,7 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
+            Debug.Log("FoldParachutteRoutine 2");
             // shrink parashutte entirely
             float xZElapsedTime = 0;
             float initialXZScale = _parachutte.transform.localScale.x;
@@ -118,6 +132,7 @@ namespace Assets.Scripts.Supply
 
             while (newXZScale > minScale)
             {
+                Debug.Log("FoldParachutteRoutine 3 - while");
                 xZElapsedTime += Time.deltaTime;
 
                 newXZScale = Mathf.Lerp(initialXZScale, minScale, xZElapsedTime / 0.5f);
@@ -131,6 +146,7 @@ namespace Assets.Scripts.Supply
                 yield return null;
             }
 
+            Debug.Log("FoldParachutteRoutine 4");
             GameObject supplyItemPrefab = _supplyItems[Random.Range(0, _supplyItems.Length)];
             //GameObject supplyItemPrefab = _supplyItems[2];
 
@@ -142,6 +158,7 @@ namespace Assets.Scripts.Supply
             // TODO : make supply items always face camera
 
             Destroy(gameObject);
+            Debug.Log("FoldParachutteRoutine 5");
         }
     }
 }
