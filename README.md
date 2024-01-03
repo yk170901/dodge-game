@@ -1,7 +1,8 @@
 # Dodge Game
 
 ## Preview
-[png file here]
+[gameplay-overview](_Resources/gameplay-overview.png)
+[gameplay-screenshot](_Resources/gameplay-screenshot.png)
 
 ## Credit
 "PUMPING HEART MODEL" (https://skfb.ly/6RIR7) by omarelone is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
